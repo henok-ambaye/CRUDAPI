@@ -37,7 +37,13 @@ jobs:
         run: mvn test
 
       - name: Upload Test Reports
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4  # Updated version
         with:
           name: test-reports
           path: target/surefire-reports/
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4  # Updated version
+        with:
+          name: application-jar
+          path: target/*.jar
