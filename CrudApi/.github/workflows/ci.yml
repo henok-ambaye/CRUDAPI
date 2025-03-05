@@ -14,16 +14,20 @@ jobs:
 
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+
+      - name: List directory contents (for debugging)
+        run: ls -R
+        working-directory: ${{ github.workspace }}
 
       - name: Set up JDK 21
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v3
         with:
-          java-version: '21'
           distribution: 'temurin'
+          java-version: '21'
 
-      - name: Move to the correct directory
-        run: cd ${{ github.workspace }}/CRUDAPI
+      - name: Ensure correct working directory
+        run: echo "Current directory: $(pwd)"
 
       - name: Cache Maven dependencies
         uses: actions/cache@v3
@@ -33,6 +37,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      - name: Build with Maven
+      - name: Run Maven Build
         run: mvn clean install --no-transfer-progress
-        working-directory: ${{ github.workspace }}/CRUDAPI  # Ensure correct working directory
+        working-directory: ${{ github.workspace }}/CrudApi
