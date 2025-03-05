@@ -20,7 +20,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '21'         # Set up JDK 21
-          distribution: 'adoptopenjdk' # Specify the distribution (can also be 'zulu' or 'temurin')
+          distribution: 'temurin'    # Use 'temurin' instead of 'adoptopenjdk'
           java-package: jdk
           architecture: x64
 
