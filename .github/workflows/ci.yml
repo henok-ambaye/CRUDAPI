@@ -22,7 +22,7 @@ jobs:
           java-version: '21'  # Set up JDK 21
 
       - name: Cache Maven dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3   # Updated to v3
         with:
           path: ~/.m2/repository  # Cache Maven dependencies
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
